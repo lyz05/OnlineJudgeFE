@@ -76,7 +76,7 @@
 </template>
 
 <script>
-  import moment from 'moment'
+  // import moment from 'moment'
   import api from '@oj/api'
   import { mapState, mapGetters, mapActions } from 'vuex'
   import { types } from '@/store'
@@ -132,13 +132,13 @@
       this.route_name = this.$route.name
       this.$store.dispatch('getContest').then(res => {
         this.changeDomTitle({title: res.data.data.title})
-        let data = res.data.data
-        let endTime = moment(data.end_time)
-        if (endTime.isAfter(moment(data.now))) {
-          this.timer = setInterval(() => {
-            this.$store.commit(types.NOW_ADD_1S)
-          }, 1000)
-        }
+        // let data = res.data.data
+        // let endTime = moment(data.end_time)
+        // if (endTime.isAfter(moment(data.now))) {
+        //   this.timer = setInterval(() => {
+        //     this.$store.commit(types.NOW_ADD_1S)
+        //   }, 5000)
+        // }
       })
     },
     methods: {

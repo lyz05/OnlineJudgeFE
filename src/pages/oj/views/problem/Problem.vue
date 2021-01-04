@@ -386,14 +386,14 @@
               clearTimeout(this.refreshStatus)
               this.init()
             } else {
-              this.refreshStatus = setTimeout(checkStatus, 2000)
+              this.refreshStatus = setTimeout(checkStatus, 6000)
             }
           }, res => {
             this.submitting = false
             clearTimeout(this.refreshStatus)
           })
         }
-        this.refreshStatus = setTimeout(checkStatus, 2000)
+        this.refreshStatus = setTimeout(checkStatus, 6000)
       },
       submitCode () {
         if (this.code.trim() === '') {
@@ -447,7 +447,7 @@
                 // 暂时解决对话框与后面提示对话框冲突的问题(否则一闪而过）
                 setTimeout(() => {
                   submitFunc(data, false)
-                }, 1000)
+                }, 6000)
               },
               onCancel: () => {
                 this.submitting = false
@@ -500,11 +500,6 @@
         theme: this.theme
       })
       next()
-    },
-    watch: {
-      '$route' () {
-        this.init()
-      }
     }
   }
 </script>
