@@ -231,7 +231,7 @@
           <el-col :span="8">
             <el-form-item :label="$t('m.Is_Disabled')">
               <el-switch
-                v-model="user.is_disabled">
+                @change="changeDisabled" :value="is_disabled">
               </el-switch>
             </el-form-item>
           </el-col>
@@ -269,7 +269,9 @@
         // 是否显示用户对话框
         showUserDialog: false,
         // 当前用户model
-        user: {},
+        user: {
+          is_disabled: false
+        },
         loadingTable: false,
         loadingGenerate: false,
         // 当前页码
@@ -289,6 +291,9 @@
     },
     methods: {
       // 切换页码回调
+      changeDisabled () {
+        this.user.is_disabled = !this.user.is_disabled
+      },
       currentChange (page) {
         this.currentPage = page
         this.getUserList(page)
@@ -389,6 +394,9 @@
       }
     },
     computed: {
+      is_disabled () {
+        return !this.user.is_disabled
+      },
       selectedUserIDs () {
         let ids = []
         for (let user of this.selectedUsers) {
